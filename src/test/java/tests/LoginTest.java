@@ -1,5 +1,6 @@
 package tests;
-
+import org.testng.annotations.DataProvider;
+import utils.ExcelReader;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -32,5 +33,20 @@ public class LoginTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickLogin();
         Assert.assertTrue(loginPage.getErrorMessage().contains("Username is required"));
+    }
+    @Test(dataProvider = "loginData")
+    public void testLoginWithMultipleUsers(String username, String password) {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login(username, password);
+        InventoryPage inventoryPage = new InventoryPage(driver);
+        Assert.assertEquals(inventoryPage.getPageTitle(), "Products");
+    }
+
+    @DataProvider(name = "loginData")
+    public Object[][] getLoginData() {
+        return ExcelReader.getTestData(
+                "testdata/LoginData.xlsx",
+                "Sheet1"
+        );
     }
 }
