@@ -22,7 +22,7 @@ public class InventoryPage {
     @FindBy(className = "shopping_cart_badge")
     WebElement cartBadge;
 
-    @FindBy(className = "title")
+    @FindBy(css = ".title")
     WebElement pageTitle;
 
     public InventoryPage(WebDriver driver) {
