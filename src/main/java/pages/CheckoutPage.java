@@ -24,7 +24,7 @@ public class CheckoutPage {
     @FindBy(id = "finish")
     WebElement finishButton;
 
-    @FindBy(css = ".complete-header")
+    @FindBy(css = "[data-test='complete-header']")
     WebElement successMessage;
 
     @FindBy(className = "title")

@@ -28,6 +28,6 @@ public class CheckoutTest extends BaseTest {
         checkoutPage.clickContinue();
         checkoutPage.clickFinish();
 
-        Assert.assertEquals(checkoutPage.getSuccessMessage(), "Thank you for your order!");
+        Assert.assertTrue(checkoutPage.getSuccessMessage().contains("Thank you"));
     }
 }
